@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Racing theme - Dark gray background with racing red accents */
+    --background: 222 14% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Racing red primary color */
+    --primary: 0 89% 44%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 9% 65%;
+
+    --accent: 0 89% 44%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 25%;
+    --ring: 0 89% 44%;
+
+    --radius: 0.75rem;
+
+    /* Racing theme gradients and effects */
+    --gradient-racing: linear-gradient(135deg, hsl(0 89% 44%), hsl(0 70% 35%));
+    --glow-red: 0 0 20px hsla(0, 89%, 44%, 0.5);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Racing stripes animation */
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%) rotate(20deg);
+    }
+    100% {
+      transform: translateY(100%) rotate(20deg);
+    }
+  }
+
+  .racing-stripes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    pointer-events: none;
+  }
+
+  .stripe {
+    width: 20vw;
+    height: 200vh;
+    background: linear-gradient(
+      45deg,
+      hsl(var(--primary)) 25%,
+      transparent 25%,
+      transparent 50%,
+      hsl(var(--primary)) 50%,
+      hsl(var(--primary)) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 40px 40px;
+    animation: slideDown 6s linear infinite;
+    opacity: 0.08;
+    transform: rotate(20deg);
+    filter: drop-shadow(0 0 5px hsl(var(--primary)));
+  }
+
+  .stripe:nth-child(2) {
+    animation-delay: 2s;
+    opacity: 0.06;
+  }
+
+  .stripe:nth-child(3) {
+    animation-delay: 4s;
+    opacity: 0.07;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
